@@ -1,0 +1,8 @@
+. : 
+  - device/bk_corp/bk7231/patches/base.patch
+  - device/bk_corp/bk7231/patches/build.patch
+  - device/bk_corp/bk7231/patches/foundation.patch
+  - device/bk_corp/bk7231/patches/mbedtls.patch
+  - device/bk_corp/bk7231/patches/test.patch
+  - device/bk_corp/bk7231/patches/kernel.patch
+

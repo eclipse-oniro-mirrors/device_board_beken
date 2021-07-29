@@ -1,0 +1,64 @@
+{
+    "product_name": "wifi_iot",
+    "ohos_version": "OpenHarmony 1.0",
+    "device_company": "bk_corp",
+    "board": "bk7231",
+    "kernel_type": "liteos_m",
+    "kernel_version": "",
+    "subsystems": [
+      {
+        "subsystem": "iot_hardware",
+        "components": [
+          { "component": "iot_controller", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "communication",
+        "components": [
+          { "component": "wlan", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "distributed_schedule",
+        "components": [
+          { "component": "system_ability_manager", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "startup",
+        "components": [
+          { "component": "syspara", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "utils",
+        "components": [
+          { "component": "kv_store", "features":[] },
+          { "component": "file", "features":[] }
+        ]
+      },
+      {
+        "subsystem": "beken",
+        "components": [
+          { "component": "ohos_entry", "features":[] },
+          { "component": "bk7231_sdk", "features":[] }
+        ]
+      }
+    ],
+    "vendor_adapter_dir": "//device/bk_corp/bk7231/bk7231_adapter",
+    "third_party_dir": "//device/bk_corp/bk7231/bk7231_sdk/third_party",
+    "product_adapter_dir": "//vendor/beken/wifi_iot/hals",
+    "ohos_product_type":"",
+    "ohos_manufacture":"",
+    "ohos_brand":"",
+    "ohos_market_name":"",
+    "ohos_product_series":"",
+    "ohos_product_model":"",
+    "ohos_software_model":"",
+    "ohos_hardware_model":"",
+    "ohos_hardware_profile":"",
+    "ohos_serial":"",
+    "ohos_bootloader_version":"",
+    "ohos_secure_patch_level":"",
+    "ohos_abi_list":""
+  }

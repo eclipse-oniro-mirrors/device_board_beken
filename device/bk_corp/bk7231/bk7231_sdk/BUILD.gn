@@ -1,0 +1,26 @@
+import("//build/lite/config/component/lite_component.gni")
+import("//build/lite/config/subsystem/lite_subsystem.gni")
+
+declare_args() {
+}
+
+lite_subsystem("bk_sdk") {
+  subsystem_components = [ ":cjson" ]
+}
+
+lite_component("cjson") {
+  features = []
+
+  deps = [
+    "//build/lite/config/component/cJSON:cjson_static",
+  ]
+}
+
+build_ext_component("build_bk7231_sdk") {
+  exec_path = rebase_path(".", root_build_dir)
+  outdir = rebase_path(root_out_dir)
+  command = "sh build_sdk.sh $outdir"
+  deps = [
+    "//build/lite:ohos",
+  ]
+}

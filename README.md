@@ -1,23 +1,24 @@
 # device_beken
 
 #### 介绍
-device_beken
+device_beken平台基于beken 7231芯片, 集wifi/ble功能于一体
 
 #### 软件架构
-软件架构说明
+app ==> func ==> driver
 
 
 #### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.  将device/, vendor/拷贝到ohos v1.1.0代码库的根目录
+2.  hb set, 选择beken下的wifi_iot产品
+3.  hb build -f --patch进行编译
+4.  编译结果为out/bk7231/wifi_iot/bk7231_sdk_crc.bin
 
 #### 使用说明
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.  使用tools/目录下的bk_writer工具, 将bk7231_sdk_crc.bin下载到bk7231开发板中
+2.  给bk7231开发板重新上电, 系统启动后进行命令行
+3.  在命令行中输入help查看可用命令
 
 #### 参与贡献
 
