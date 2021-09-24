@@ -1,0 +1,36 @@
+import("//build/lite/ndk/ndk.gni")
+
+static_library("bluetooth") {
+  sources = [
+    "src/ohos_bt_hal.c",
+    "src/ble_test.c",
+  ]
+  include_dirs = [
+    "//foundation/communication/bluetooth/interfaces/innerkits/native_c/include",
+    "//kernel/liteos_m/kal",
+    "//kernel/liteos_m/kernel/include",
+    
+    "${beken_sdk_dir}/beken378/driver/ble_5_x_rw/ble_pub/app/api",
+    "${beken_sdk_dir}/beken378/driver/ble_5_x_rw/platform/7231n/config",
+    "${beken_sdk_dir}/beken378/driver/ble_5_x_rw/arch/armv5",
+    "${beken_sdk_dir}/beken378/driver/ble_5_x_rw/arch/armv5/ll",
+    "${beken_sdk_dir}/beken378/driver/ble_5_x_rw/platform/7231n/entry",
+    "${beken_sdk_dir}/beken378/driver/ble_5_x_rw/ble_lib/ip/ble/ll/api",
+    "${beken_sdk_dir}/beken378/driver/ble_5_x_rw/ble_lib/ip/ble/hl/inc",
+    "${beken_sdk_dir}/beken378/driver/ble_5_x_rw/ble_lib/ip/ble/hl/api",
+    "${beken_sdk_dir}/beken378/driver/ble_5_x_rw/ble_lib/modules/common/api",
+    "${beken_sdk_dir}/beken378/driver/ble_5_x_rw/platform/7231n/rwip/api",
+    "${beken_sdk_dir}/beken378/driver/ble_5_x_rw/ble_lib/modules/ke/api",
+    "${beken_sdk_dir}/beken378/driver/ble_5_x_rw/ble_pub/ui",
+    "${beken_sdk_dir}/beken378/driver/ble_5_x_rw/ble_pub/profiles/comm/api",
+  ]
+}
+
+if (ohos_kernel_type == "liteos_m") {
+  ndk_lib("bluetooth_ndk") {
+    deps = [ ":bluetooth" ]
+
+    head_files =
+        [ "//foundation/communication/bluetooth/interfaces/innerkits/native_c/include" ]
+  }
+}
