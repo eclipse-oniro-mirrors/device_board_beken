@@ -9,10 +9,13 @@ app ==> func ==> driver
 
 #### 安装教程
 
-1.  将device/, vendor/拷贝到ohos v1.1.0代码库的根目录
-2.  hb set, 选择beken下的wifi_iot产品
-3.  hb build -f --patch进行编译
-4.  编译结果为out/bk7231/wifi_iot/bk7231_sdk_crc.bin
+1.  在本地创建一个用于存放源码的目录，进入该目录
+2.  输入以下命令初始化代码仓库 : 
+	repo init -u https://gitee.com/openharmony-sig/manifest.git -b master --no-repo-verify -m devboard_beken.xml
+3.  输入repo sync -c下载所有代码到本地
+4.  输入hb set, 选择beken下的wifi_iot产品
+5.  输入hb build -f --patch进行编译
+6.  编译结果为out/bk7231/wifi_iot/bk7231_sdk_crc.bin
 
 #### 使用说明
 
