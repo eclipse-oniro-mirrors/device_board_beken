@@ -71,6 +71,7 @@ INCLUDES += -I./beken378/driver/general_dma
 INCLUDES += -I./beken378/driver/spidma
 INCLUDES += -I./beken378/driver/icu
 INCLUDES += -I./beken378/driver/i2c
+INCLUDES += -I./beken378/driver/spi
 INCLUDES += -I./beken378/driver/jpeg
 INCLUDES += -I./beken378/driver/usb
 INCLUDES += -I./beken378/func/include
@@ -405,6 +406,7 @@ SRC_C += ./beken378/func/misc/pseudo_random.c
 SRC_C += ./beken378/func/misc/target_util.c
 SRC_C += ./beken378/func/misc/start_type.c
 SRC_C += ./beken378/func/misc/soft_encrypt.c
+SRC_C += ./beken378/func/misc/flash_bypass.c
 SRC_C += ./beken378/func/power_save/power_save.c
 SRC_C += ./beken378/func/power_save/manual_ps.c
 SRC_C += ./beken378/func/power_save/mcu_ps.c
@@ -432,6 +434,7 @@ SRC_C += ./beken378/func/utf8/conv_utf8.c
 
 # video / jpeg
 SRC_C += ./beken378/func/camera_intf/camera_intf.c
+SRC_C += ./beken378/func/camera_intf/camera_intf_gc2145.c
 SRC_C += ./beken378/func/video_transfer/video_transfer.c
 
 # For WPA3: wolfssl
@@ -682,6 +685,7 @@ SRC_C += ./beken378/driver/ble_5_x_rw/ble_pub/profiles/comm/src/comm.c
 SRC_C += ./beken378/driver/ble_5_x_rw/ble_pub/profiles/comm/src/comm_task.c
 SRC_C += ./beken378/driver/ble_5_x_rw/ble_pub/app/src/app_comm.c
 SRC_C += ./beken378/driver/ble_5_x_rw/ble_pub/app/src/app_ble.c
+SRC_C += ./beken378/driver/ble_5_x_rw/ble_pub/app/src/app_sec.c
 SRC_C += ./beken378/driver/ble_5_x_rw/ble_pub/app/src/app_task.c
 SRC_C += ./beken378/driver/ble_5_x_rw/ble_pub/ui/ble_ui.c
 SRC_C += ./beken378/driver/ble_5_x_rw/platform/7231n/rwip/src/rwip.c

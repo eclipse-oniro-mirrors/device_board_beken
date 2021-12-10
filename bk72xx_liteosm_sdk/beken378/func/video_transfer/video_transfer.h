@@ -92,7 +92,7 @@ UINT32 video_transfer_set_video_param(UINT32 ppi, UINT32 fps);
 
 int video_buffer_open(void);
 int video_buffer_close(void);
-UINT32 video_buffer_read_frame(UINT8 *buf, UINT32 buf_len);
+UINT32 video_buffer_read_frame(UINT8 *buf, UINT32 buf_len, int *err_code, UINT32 timeout);
 #endif
 
 #endif // __VIDEO_TRANS_H__

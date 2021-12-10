@@ -14,7 +14,7 @@
 #include "common/wpa_common.h"
 #endif /* CONFIG_MESH */
 
-#include "list.h"
+#include "utils/list.h"
 #include "vlan.h"
 #include "common/wpa_common.h"
 #include "common/ieee802_11_defs.h"

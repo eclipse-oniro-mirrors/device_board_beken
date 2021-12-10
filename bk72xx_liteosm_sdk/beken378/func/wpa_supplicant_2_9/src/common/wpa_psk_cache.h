@@ -3,7 +3,7 @@
 
 #include "includes.h"
 #include "typedef.h"
-#include "list.h"
+#include "utils/list.h"
 #include "rtos_pub.h"
 #include "common.h"
 #include "wpa_common.h"

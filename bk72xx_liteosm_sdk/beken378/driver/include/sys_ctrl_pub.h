@@ -364,11 +364,16 @@ typedef struct charge_oper_st
 *******************************************************************************/
 extern void sctrl_init(void);
 extern void sctrl_exit(void);
-
 extern void sctrl_normal_exit_sleep(void);
 extern void sctrl_normal_enter_sleep(UINT32 peri_clk);
 extern void sctrl_mcu_exit(void);
 extern void sctrl_mcu_init(void);
+
+#if ((CFG_SOC_NAME == SOC_BK7221U) || (CFG_SOC_NAME == SOC_BK7231N))
+extern void sctrl_flash_select_flash_controller(void);
+extern void sctrl_flash_select_spi_controller(void);
+#endif
+
 extern void sctrl_mcu_sleep(UINT32 );
 extern UINT32 sctrl_mcu_wakeup(void);
 extern void sctrl_ps_dump();
@@ -382,9 +387,10 @@ extern UINT32 usb_power_is_pluged(void);
 extern void sctrl_rf_ps_enable_set(void);
 extern void sctrl_rf_ps_enable_clear(void);
 extern int sctrl_rf_ps_enabled(void);
-RESET_SOURCE_STATUS sctrl_get_deep_sleep_wake_soure(void);
-UINT8 sctrl_if_mcu_can_sleep(void);
+extern RESET_SOURCE_STATUS sctrl_get_deep_sleep_wake_soure(void);
+extern UINT8 sctrl_if_mcu_can_sleep(void);
 extern int bk_misc_wakeup_get_gpio_num(void);
 extern UINT32 sctrl_get_deep_sleep_gpio_floating_map(void);
 
 #endif // _SCTRL_PUB_H_
+

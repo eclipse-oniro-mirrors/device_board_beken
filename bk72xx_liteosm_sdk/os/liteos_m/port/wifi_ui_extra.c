@@ -38,6 +38,7 @@
 #include "str_pub.h"
 #include "bk7011_cal_pub.h"
 #include "wifi_ui_extra.h"
+#include "common_utils.h"
 
 extern void bk_wlan_set_coexist_at_init_phase(uint8_t current_role);
 
@@ -175,5 +176,11 @@ int los_wlan_start_sta(network_InitTypeDef_st *inNetworkInitPara, char *psk, uns
 
 	return kNoErr;
 }
+
+UINT8* bk_ble_get_mac_addr(void)
+{
+    return (UINT8*)&common_default_bdaddr;
+}
+
 // eof
 

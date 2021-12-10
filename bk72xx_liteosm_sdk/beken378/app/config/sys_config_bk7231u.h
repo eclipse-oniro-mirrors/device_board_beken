@@ -21,7 +21,7 @@
 #define RTOS_FREERTOS                              3
 #define RTOS_LITEOS                                4
 
-#define CFG_SUPPORT_RTOS                           RTOS_LITEOS
+#define CFG_SUPPORT_RTOS                           RTOS_FREERTOS
 
 #define FREERTOS_V9                                1
 #define FREERTOS_V10                               2
@@ -256,6 +256,12 @@
 #undef  CFG_USE_MCU_PS
 #define CFG_USE_MCU_PS                             RHINO_CONFIG_CPU_PWR_MGMT
 #endif
+
+#define FLASH_SELECTION_TYPE_DYNAMIC               0 //select with flashID runtime
+#define FLASH_SELECTION_TYPE_2M                    0x200000 //2MBytes
+#define FLASH_SELECTION_TYPE_4M                    0x400000 //4MBytes
+#define FLASH_SELECTION_TYPE_8M                    0x800000 //8MBytes
+#define CFG_FLASH_SELECTION_TYPE                   FLASH_SELECTION_TYPE_2M
 
 /* watchdog, freertos only */
 #define CFG_INT_WDG_ENABLED                        1

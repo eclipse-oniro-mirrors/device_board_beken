@@ -2,7 +2,7 @@
 #ifndef __UART_BLE_H__
 #define __UART_BLE_H__
 
-#define HCI_DATA_BUF_SIZE		512
+#define HCI_DATA_BUF_SIZE		128
 #define UART_FIFO_MAX_COUNT		128
 #define HCI_DATA_TYPE_CMD		0x01
 #define HCI_DATA_TYPE_EVENT		0x02

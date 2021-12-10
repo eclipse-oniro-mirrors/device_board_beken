@@ -68,7 +68,7 @@ extern "C" {
  *Task module configuration
  *=============================================================================*/
 #define LOSCFG_BASE_CORE_TSK_LIMIT                          30
-#define LOSCFG_BASE_CORE_TSK_IDLE_STACK_SIZE                (0x500U)
+#define LOSCFG_BASE_CORE_TSK_IDLE_STACK_SIZE                (0x300U)
 #define LOSCFG_BASE_CORE_TSK_DEFAULT_STACK_SIZE             (0x3D0U)
 
 /*scheduler occupies too much stack for every thread*/
@@ -86,7 +86,7 @@ extern "C" {
  *Mutex module configuration
  *=============================================================================*/
 #define LOSCFG_BASE_IPC_MUX                                 1
-#define LOSCFG_BASE_IPC_MUX_LIMIT                           32
+#define LOSCFG_BASE_IPC_MUX_LIMIT                           64
 
 /*=============================================================================
  *Queue module configuration
@@ -99,7 +99,7 @@ extern "C" {
  *=============================================================================*/
 #define LOSCFG_BASE_CORE_SWTMR                              1
 #define LOSCFG_BASE_CORE_SWTMR_ALIGN                        1
-#define LOSCFG_BASE_CORE_SWTMR_LIMIT                        32
+#define LOSCFG_BASE_CORE_SWTMR_LIMIT                        16
 
 /*=============================================================================
  *Memory module configuration

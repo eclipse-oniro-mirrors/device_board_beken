@@ -33,11 +33,11 @@ struct bk_ble_ind_upd_req
 
 
 struct bk_ble_write_ind
-{   
+{
     uint8_t conidx;
     uint16_t prf_id;
     uint16_t att_id;
-    uint8_t length;
+    uint16_t length;
     uint8_t value[__ARRAY_EMPTY];
 };
 

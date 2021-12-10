@@ -56,6 +56,21 @@
 #define BLE_APP_INITING_GET_INDEX(conidx)   ((conidx) - BLE_ACTIVITY_MAX)
 #define BLE_APP_INITING_CHECK_INDEX(conidx)   (((conidx) >= BLE_ACTIVITY_MAX) && ((conidx) < APP_IDX_MAX))
 
+
+#define BLE_APP_CHECK_ACTVS_IDX(actv_idx) \
+	if (actv_idx >= BLE_ACTIVITY_MAX) {\
+		bk_printf("[%s]unknow actv_idx:%d\r\n",__FUNCTION__,actv_idx);\
+		return ERR_UNKNOW_IDX;\
+	}
+
+#define BLE_APP_CHECK_CONN_IDX(conn_idx) \
+	if (conn_idx >= BLE_CONNECTION_MAX) {\
+		bk_printf("[%s]unknow conn_idx:%d\r\n",__FUNCTION__,conn_idx);\
+		return ERR_UNKNOW_IDX;\
+	}
+
+
+
 /*
  * DEFINES
  ****************************************************************************************
@@ -243,6 +258,7 @@ struct conn_info {
 	struct bd_addr peer_addr;
 	/// Role of device in connection (0 = Master / 1 = Slave)
 	uint8_t role;
+	uint8_t auth;
 };
 
 struct actv_info {

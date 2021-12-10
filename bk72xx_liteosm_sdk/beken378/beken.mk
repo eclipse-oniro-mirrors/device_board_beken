@@ -38,6 +38,7 @@ $(NAME)_INCLUDES := app/standalone-ap \
 					func/rwnx_intf \
 					func/rf_test \
 					func/rf_use \
+					func/misc \
 					func/camera_intf \
 					func/video_transfer \
 					func/user_driver \
@@ -144,6 +145,7 @@ $(NAME)_SOURCES :=  app/app.c \
 					func/lwip_intf/dhcpd/dhcp-server-main.c \
 					func/lwip_intf/dhcpd/dhcp-server.c \
 					func/camera_intf/camera_intf.c \
+					func/camera_intf/camera_intf_gc2145.c \
 					func/video_transfer/video_transfer.c \
 					func/force_sleep/force_mac_ps.c \
 					func/force_sleep/force_mcu_ps.c \

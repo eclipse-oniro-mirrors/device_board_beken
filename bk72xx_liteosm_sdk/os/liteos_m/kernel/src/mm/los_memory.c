@@ -1555,7 +1555,7 @@ STATIC UINT32 OsMemFreeListNodeCheck(const struct OsMemPoolHead *pool,
 
     return LOS_OK;
 }
-
+extern void OsMemPrintfInfo(void);
 STATIC VOID OsMemPoolHeadCheck(const struct OsMemPoolHead *pool)
 {
     struct OsMemFreeNodeHead *tmpNode = NULL;
@@ -1564,6 +1564,7 @@ STATIC VOID OsMemPoolHeadCheck(const struct OsMemPoolHead *pool)
 
     if ((pool->info.pool != pool) || !OS_MEM_IS_ALIGNED(pool, sizeof(VOID *))) {
         PRINT_ERR("wrong mem pool addr: %p, func: %s, line: %d\n", pool, __FUNCTION__, __LINE__);
+		OsMemPrintfInfo();
         return;
     }
 
@@ -1965,7 +1966,8 @@ UINT32 OsMemSystemInit(VOID)
 	m_aucSysMem0 = g_memStart;
 #elif LOS_BEKEN
 	extern UINT8 _empty_ram;
-	m_aucSysMem0 = (UINT8 *)&_empty_ram;
+	m_aucSysMem0 = (UINT8 *)&_empty_ram+1024;
+	memset((UINT8 *)&_empty_ram,0xa8,1024);
 #else
 	m_aucSysMem0 = LOSCFG_SYS_HEAP_ADDR;
 #endif
@@ -2053,4 +2055,38 @@ UINT32 OsMemExcInfoGet(UINT32 memNumMax, MemInfoCB *memExcInfo)
 }
 #endif
 
+
+void OsMemPrintfInfo(void)
+{
+	struct OsMemPoolHead * pool = (struct OsMemPoolHead *)m_aucSysMem0;
+
+	
+		struct OsMemPoolHead *poolInfo = (struct OsMemPoolHead *)pool;
+		LOS_MEM_POOL_STATUS status = {0};
+		LOS_MemInfoGet(pool, &status);
+		extern UINT8 _empty_ram;
+//		if(m_aucSysMem0  !=(UINT8 *)&_empty_ram+4096)
+//			{
+//				printf("m_aucSysMem0 err:0x%x\r\n",m_aucSysMem0);
+//			m_aucSysMem0 = (UINT8 *)&_empty_ram+4096;
+//			}
+		printf("m_aucSysMem0:0x%x\r\n",m_aucSysMem0);
+		unsigned int *ptr = (unsigned int *)&_empty_ram;
+		for(int i = 0;i<1024/4;i++){
+			if(ptr[i] != 0xa8a8a8a8){
+				printf("[0x%x]=%x ",&ptr[i],ptr[i]);
+			}
+		}
+//		printf("m_aucSysMem0:0x%x,[0x%x]=%x,[0x%x]=%x\r\n",m_aucSysMem0,(UINT8 *)&_empty_ram,*((unsigned int *)((UINT8 *)&_empty_ram)), 
+//		(UINT8 *)&_empty_ram+4092,*((unsigned int *)((UINT8 *)&_empty_ram+4092)));
+		printf("\r\npool addr		   pool size	used size	  free size    "
+			   "max free node size	 used node num	   free node num	  UsageWaterLine\r\n");
+		printf("---------------    -------- 	------- 	  --------	   "
+			   "--------------		 -------------		------------	  ------------\r\n");
+		printf("%-16p	0x%-8x	 0x%-8x    0x%-8x	0x%-16x   0x%-13x	 0x%-13x	0x%-13x\r\n",
+			   poolInfo->info.pool, LOS_MemPoolSizeGet(pool), status.totalUsedSize,
+			   status.totalFreeSize, status.maxFreeNodeSize, status.usedNodeNum,
+			   status.freeNodeNum, status.usageWaterLine);
+
+}
 

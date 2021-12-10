@@ -40,7 +40,7 @@
 /* arch.h might define NULL already */
 #include "lwip/arch.h"
 #include "lwip/opt.h"
-#include "generic.h"
+//#include "generic.h"
 
 #if LWIP_PERF
 #include "arch/perf.h"

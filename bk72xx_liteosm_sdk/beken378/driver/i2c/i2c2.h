@@ -6,12 +6,12 @@
 #define I2C2_DEBUG
 //#undef I2C2_DEBUG
 
-#define I2C2_PRT                 os_null_printf//os_printf
+#define I2C2_PRT                 os_printf//os_printf
 
 #ifdef I2C2_DEBUG
 #define I2C2_WPRT                warning_prf
 #define I2C2_EPRT                os_printf
-#define I2C2_DEBUG_PRINTF		 os_null_printf
+#define I2C2_DEBUG_PRINTF		 os_printf
 #else
 #define I2C2_WPRT                os_null_printf
 #define I2C2_EPRT                os_printf

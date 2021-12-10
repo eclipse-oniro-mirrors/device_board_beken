@@ -146,6 +146,7 @@ func/bk7011_cal/manual_cal_bk7231U.c
 func/bk_aware/bk_aware.c
 func/ble_wifi_exchange/ble_wifi_port.c
 func/camera_intf/camera_intf.c
+func/camera_intf/camera_intf_gc2145.c
 func/easy_flash/bk_ef.c
 func/easy_flash/demo/iap/ymodem+rtt.c
 func/easy_flash/demo/log/easylogger.c
@@ -395,6 +396,7 @@ func/misc/target_util.c
 func/misc/fake_clock.c
 func/misc/start_type.c
 func/misc/soft_encrypt.c
+func/misc/flash_bypass.c
 func/music_player/Mp3Lib/bitstream.c
 func/music_player/Mp3Lib/buffers.c
 func/music_player/Mp3Lib/dct32.c
