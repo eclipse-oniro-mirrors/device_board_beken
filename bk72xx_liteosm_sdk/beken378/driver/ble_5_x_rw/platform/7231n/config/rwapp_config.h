@@ -40,12 +40,25 @@
 #define CFG_APP_COMM
 #endif
 
+#if (1)
+#define CFG_APP_SEC
+#endif
+
 /// COMM Service Application
 #if defined(CFG_APP_COMM)
 #define BLE_APP_COMM               1
 #else
 #define BLE_APP_COMM               0
 #endif // defined(BLE_APP_COMM)
+
+
+/// Sec Application
+#if defined(CFG_APP_SEC)
+#define BLE_APP_SEC                1
+#else
+#define BLE_APP_SEC                0
+#endif // defined(BLE_APP_COMM)
+
 /******************************************************************************************/
 /* -------------------------   BLE APPLICATION SETTINGS      -----------------------------*/
 /******************************************************************************************/

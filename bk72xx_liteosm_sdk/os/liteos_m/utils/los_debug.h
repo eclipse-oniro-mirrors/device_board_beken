@@ -92,6 +92,8 @@ VOID OsDoExcHook(EXC_TYPE excType);
 #define LOG_INFO_LEVEL      (LOG_WARN_LEVEL + 1)
 #define LOG_DEBUG_LEVEL     (LOG_INFO_LEVEL + 1)
 
+#define PRINT_LEVEL LOG_DEBUG_LEVEL
+
 #ifndef PRINT_LEVEL
 #define PRINT_LEVEL         LOG_EMG_LEVEL
 #endif
@@ -144,8 +146,9 @@ extern VOID HalConsoleOutput(LogModuleType type, INT32 level, const CHAR *fmt, .
 #define PRINT_INFO(fmt, args...)     LOS_Printf(LOG_MODULE_KERNEL, LOG_INFO_LEVEL, fmt, ##args)
 #define PRINT_WARN(fmt, args...)     LOS_Printf(LOG_MODULE_KERNEL, LOG_WARN_LEVEL, fmt, ##args)
 #define PRINT_ERR(fmt, args...)      LOS_Printf(LOG_MODULE_KERNEL, LOG_ERR_LEVEL, fmt, ##args)
-#define PRINTK(fmt, args...)         LOS_Printf(LOG_MODULE_KERNEL, LOG_COMMON_LEVEL, fmt, ##args)
+//#define PRINTK(fmt, args...)         LOS_Printf(LOG_MODULE_KERNEL, LOG_COMMON_LEVEL, fmt, ##args)
 #define PRINT_EMG(fmt, args...)      LOS_Printf(LOG_MODULE_KERNEL, LOG_EMG_LEVEL, fmt, ##args)
+#define PRINTK(fmt, args...)  bk_printf(fmt,##args)
 
 #if PRINT_LEVEL < LOG_ERR_LEVEL
 #define LOS_ASSERT(judge)

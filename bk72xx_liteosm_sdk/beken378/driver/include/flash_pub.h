@@ -1,6 +1,8 @@
 #ifndef _FLASH_PUB_H
 #define _FLASH_PUB_H
 
+#include "generic.h"
+
 #define FLASH_DEV_NAME                ("flash")
 
 #define FLASH_FAILURE                (1)
@@ -27,6 +29,7 @@ enum
 
     CMD_FLASH_SET_WSR,
     CMD_FLASH_GET_ID,
+    CMD_FLASH_GET_SIZE,
     CMD_FLASH_READ_MID,
     CMD_FLASH_ERASE_SECTOR,
 	CMD_FLASH_SET_HPM,
@@ -60,6 +63,8 @@ typedef struct
 extern void flash_init(void);
 extern void flash_exit(void);
 extern UINT8 flash_get_line_mode(void);
+extern UINT32 flash_is_support_0x50h_cmd(void);
+extern UINT32 flash_register_bypass_cb(FUNC_2PARAM_CB cb);
 extern void flash_set_line_mode(UINT8);
 extern UINT32 flash_read(char *user_buf, UINT32 count, UINT32 address);
 extern UINT32 flash_write(char *user_buf, UINT32 count, UINT32 address);

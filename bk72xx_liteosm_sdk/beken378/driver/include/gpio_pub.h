@@ -294,6 +294,7 @@ extern UINT32 gpio_ctrl(UINT32 cmd, void *param);
 extern UINT32 gpio_input(UINT32 id);
 extern void gpio_init(void);
 extern void gpio_exit(void);
+extern UINT32 gpio_get_config(UINT32 index, UINT32 *mode);
 extern void gpio_int_disable(UINT32 index);
 extern void gpio_int_enable(UINT32 index, UINT32 mode, void (*p_Int_Handler)(unsigned char));
 extern void gpio_config( UINT32 index, UINT32 mode ) ;

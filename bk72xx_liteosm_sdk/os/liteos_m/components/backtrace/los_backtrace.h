@@ -138,6 +138,30 @@ extern CHAR *CSTACK_SECTION_END;
 #else
 #error Unknown compiler.
 #endif
+
+#elif (LOSCFG_BACKTRACE_TYPE == 6)
+/* The default code section start address */
+#define CODE_SECTION_START      _stext
+/* The default code section end address */
+#define CODE_SECTION_END        _etext
+/* The default C stack section start address */
+#define CSTACK_SECTION_START    _sstack
+/* The default C stack section end address */
+#define CSTACK_SECTION_END      _estack
+
+extern CHAR *CODE_SECTION_START;
+extern CHAR *CODE_SECTION_END;
+extern CHAR *CSTACK_SECTION_START;
+extern CHAR *CSTACK_SECTION_END;
+
+/* Default only one code section. In fact, there may be more than one.
+   You can define more than one and redefine the OsStackDataIsCodeAddr function
+   to support searching in multiple code sections */
+#define CODE_START_ADDR     ((UINTPTR)&CODE_SECTION_START)
+#define CODE_END_ADDR       ((UINTPTR)&CODE_SECTION_END)
+#define CSTACK_START_ADDR   ((UINTPTR)&CSTACK_SECTION_START)
+#define CSTACK_END_ADDR     ((UINTPTR)&CSTACK_SECTION_END)
+
 #endif
 
 /* This function is used to judge whether the data in the stack is a code section address.

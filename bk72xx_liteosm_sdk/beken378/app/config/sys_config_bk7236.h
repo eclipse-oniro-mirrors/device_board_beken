@@ -254,6 +254,12 @@
 #define CFG_LWIP_MEM_POLICY                       LWIP_REDUCE_THE_PLAN
 #endif
 
+#define FLASH_SELECTION_TYPE_DYNAMIC               0 //select with flashID runtime
+#define FLASH_SELECTION_TYPE_2M                    0x200000 //2MBytes
+#define FLASH_SELECTION_TYPE_4M                    0x400000 //4MBytes
+#define FLASH_SELECTION_TYPE_8M                    0x800000 //8MBytes
+#define CFG_FLASH_SELECTION_TYPE                   FLASH_SELECTION_TYPE_2M
+
 
 /* watchdog, freertos only */
 #define CFG_INT_WDG_ENABLED                        1

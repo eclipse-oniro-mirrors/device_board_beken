@@ -12,8 +12,8 @@ extern int do_evm(cmd_tbl_t *cmdtp, int flag, int argc, char *const argv[]);
 #define EVM_VIAMAC_TPC_MODE                    (0)
 #define EVM_VIAMAC_NOTPC_MODE                  (2)
 #if (CFG_SOC_NAME == SOC_BK7231N)
-#define EVM_DEFUALT_PACKET_LEN                 (500)
-#define EVM_DEFUALT_B_PACKET_LEN               (100)
+#define EVM_DEFUALT_PACKET_LEN                 (1024)
+#define EVM_DEFUALT_B_PACKET_LEN               (1024)
 #else
 #define EVM_DEFUALT_PACKET_LEN                 (100)
 #define EVM_DEFUALT_B_PACKET_LEN               (100)

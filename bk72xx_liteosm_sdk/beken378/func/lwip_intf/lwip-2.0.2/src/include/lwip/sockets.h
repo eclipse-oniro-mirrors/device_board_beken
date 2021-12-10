@@ -38,7 +38,7 @@
 #define LWIP_HDR_SOCKETS_H
 
 #include "lwip/opt.h"
-#include "mem_pub.h"
+//#include "mem_pub.h"
 
 #if LWIP_SOCKET /* don't build if not configured for use in lwipopts.h */
 

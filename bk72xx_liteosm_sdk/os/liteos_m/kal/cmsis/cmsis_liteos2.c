@@ -52,9 +52,10 @@ static osKernelState_t g_kernelState;
 
 extern BOOL g_taskScheduled;
 
+#define LOS_PRIORITY_WIN 8
 /* LOSCFG_BASE_CORE_TSK_DEFAULT_PRIO <---> osPriorityNormal */
-#define LOS_PRIORITY(cmsisPriority) (LOSCFG_BASE_CORE_TSK_DEFAULT_PRIO - ((cmsisPriority) - osPriorityNormal))
-#define CMSIS_PRIORITY(losPriority) (osPriorityNormal + (LOSCFG_BASE_CORE_TSK_DEFAULT_PRIO - (losPriority)))
+#define LOS_PRIORITY(cmsisPriority)  (OS_TASK_PRIORITY_LOWEST - (cmsisPriority - LOS_PRIORITY_WIN))
+#define CMSIS_PRIORITY(losPriority)  (OS_TASK_PRIORITY_LOWEST - (losPriority - LOS_PRIORITY_WIN))
 
 /* OS_TASK_PRIORITY_HIGHEST and OS_TASK_PRIORITY_LOWEST is reserved for internal TIMER and IDLE task use only. */
 #define ISVALID_LOS_PRIORITY(losPrio) ((losPrio) > OS_TASK_PRIORITY_HIGHEST && (losPrio) < OS_TASK_PRIORITY_LOWEST)
@@ -284,7 +285,7 @@ osThreadId_t osThreadNew(osThreadFunc_t func, void *argument, const osThreadAttr
     TSK_INIT_PARAM_S stTskInitParam = {NULL};
     UINT16 usPriority;
 
-    if (OS_INT_ACTIVE || (func == NULL)) {
+    if (OS_INT_ACTIVE || (func == NULL) || (attr == NULL)) {
         return (osThreadId_t)NULL;
     }
 

@@ -109,9 +109,9 @@
  */
 #define MEM_ALIGNMENT                   4
 
-#define MAX_SOCKETS_TCP 12
-#define MAX_LISTENING_SOCKETS_TCP 4
-#define MAX_SOCKETS_UDP 22
+#define MAX_SOCKETS_TCP 8
+#define MAX_LISTENING_SOCKETS_TCP 3
+#define MAX_SOCKETS_UDP 12
 #define TCP_SND_BUF_COUNT 5
 
 /* Value of TCP_SND_BUF_COUNT denotes the number of buffers and is set by

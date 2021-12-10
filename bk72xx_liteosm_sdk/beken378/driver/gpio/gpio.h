@@ -99,9 +99,8 @@ typedef void (*GPIO_FUNC_PTR)(unsigned char param);
 #else
 #define GPIO_EXTRAL_INT_MASK                  (DPLL_UNLOCK_INT | AUDIO_DPLL_UNLOCK_INT)
 #endif  // (CFG_SOC_NAME == SOC_BK7221U)
-
 #endif  //  (CFG_SOC_NAME == SOC_BK7231)
-                 
+
 #define REG_GPIO_DETECT                      (GPIO_BASE_ADDR + 39*4)
 #define IS_OVER_TEMP_DECT_BIT                 (1 << 0)
 #define IS_USB_PLUG_IN_BIT                    (1 << 1)

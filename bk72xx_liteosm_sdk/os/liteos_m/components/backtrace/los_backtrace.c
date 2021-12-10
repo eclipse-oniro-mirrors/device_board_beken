@@ -340,6 +340,56 @@ STATIC INLINE UINTPTR OsAddrIsValid(UINTPTR sp)
 
     return pc;
 }
+
+#elif (LOSCFG_BACKTRACE_TYPE == 6)
+
+#define OS_BACKTRACE_START               1
+
+STATIC INLINE UINTPTR OsFpGet(VOID)
+{
+    UINTPTR fp = 0;
+    __asm volatile("mov %0, fp" : "=r"(fp));
+    return fp;
+}
+
+VOID LOS_RecordLR(UINTPTR *LR, UINT32 LRSize, UINT32 jumpCount, UINTPTR SP)
+{
+    UINT32 count = 0;
+    UINT32 index = 0;
+    LosTaskCB *taskCB = NULL;
+    UINT32 taskID;
+    UINT32 stackStart, stackEnd;
+    UINTPTR framePtr, tmpFramePtr, linkReg;
+
+    if (LR == NULL) {
+        return;
+    }
+
+    taskID = LOS_CurTaskIDGet();
+    taskCB = OS_TCB_FROM_TID(taskID);
+    stackStart = taskCB->topOfStack;
+    stackEnd = stackStart + taskCB->stackSize;
+
+    framePtr = OsFpGet();
+    while ((framePtr > stackStart) && (framePtr < stackEnd)) {
+        tmpFramePtr = framePtr;
+        linkReg = *(UINTPTR *)framePtr;
+        if (index >= jumpCount) {
+            LR[count++] = linkReg;
+            if (count == LRSize) {
+                break;
+            }
+        }
+        index++;
+        framePtr = *(UINTPTR *)(tmpFramePtr - sizeof(UINTPTR));
+    }
+
+    /* if linkReg is not enough,clean up the last of the effective LR as the end. */
+    if (count < LRSize) {
+        LR[count] = 0;
+    }
+}
+
 #else
 #error Unknown backtrace type.
 #endif
@@ -383,8 +433,8 @@ VOID LOS_RecordLR(UINTPTR *LR, UINT32 LRSize, UINT32 jumpCount, UINTPTR SP)
         LR[count] = 0;
     }
 }
-#else
-#error Unknown backtrace type.
+//#else
+//#error Unknown backtrace type.
 #endif
 
 VOID LOS_BackTrace(VOID)

@@ -257,7 +257,7 @@
 
 // </h>
 
-#define CFG_ECC_P256_ACC	0
+#define CFG_ECC_P256_ACC	1
 #define CFG_BLE_PER_SYNC	0
 #define CFG_BLE_PER_ADV		0
 #define CFG_BLE_EXT_ADV		1

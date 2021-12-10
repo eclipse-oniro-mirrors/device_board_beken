@@ -98,7 +98,6 @@ OSStatus rtos_create_thread( beken_thread_t *thread, uint8_t priority, const cha
     stTskInitParam.usTaskPrio = usPriority;
 
     uwRet = LOS_TaskCreate((UINT32 *)&uwTid, &stTskInitParam);
-	bk_printf("[wzl_debug]LOS_TaskCreate:%s:%d\r\n", name, uwRet);
 	if(LOS_OK != uwRet)
 	{
 		ret = kGeneralErr;
@@ -601,7 +600,6 @@ OSStatus rtos_init_queue( beken_queue_t *queue, const char* name, uint32_t msg_s
     }
 
     uwRet = LOS_QueueCreate((char *)name, (UINT16)msg_count, &uwQueueID, 0, (UINT16)msg_size);
-	bk_printf("[wzl_debug]LOS_QueueCreate:%s:%d\r\n", name, uwRet);
     if (uwRet == LOS_OK) {
         *queue = (beken_queue_t)(GET_QUEUE_HANDLE(uwQueueID));
     } else {

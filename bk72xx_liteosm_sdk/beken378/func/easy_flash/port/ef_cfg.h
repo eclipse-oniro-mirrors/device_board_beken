@@ -76,10 +76,11 @@
  * @note the log area size must be more than twice of EF_ERASE_MIN_SIZE
  */
 /* backup area start address */ /* start address of param partition */
-#define EF_START_ADDR                  (0x1FE000)
+#define EF_START_ADDR                  (0x200000 - 12*2*1024)
 
 /* the user setting size of ENV, must be word alignment */
-#define ENV_USER_SETTING_SIZE          (1 * 1024)
+//#define ENV_USER_SETTING_SIZE          (1 * 1024)
+#define ENV_USER_SETTING_SIZE          (12* 1024 - 20)
 
 #ifndef EF_ENV_USING_PFS_MODE
 #ifndef EF_ENV_USING_WL_MODE
@@ -92,7 +93,7 @@
 #else
 #ifndef EF_ENV_USING_WL_MODE
 /* ENV area total bytes size in power fail safeguard mode. */
-#define ENV_AREA_SIZE          (2 * EF_ERASE_MIN_SIZE)      /* 8K */
+#define ENV_AREA_SIZE          ((12*2/4) * EF_ERASE_MIN_SIZE)      /* 8K */
 #else
 /* ENV area total bytes size in wear leveling and power fail safeguard mode. */
 #define ENV_AREA_SIZE          (6 * EF_ERASE_MIN_SIZE)      /* 24K */

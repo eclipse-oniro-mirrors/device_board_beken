@@ -288,6 +288,7 @@ beken_thread_t* rtos_get_current_thread( void);
   * @return   None.
   */
 void rtos_thread_sleep(uint32_t seconds);
+void rtos_thread_msleep(uint32_t ms);
 
 /** @brief    Suspend current thread for a specific time
  *
