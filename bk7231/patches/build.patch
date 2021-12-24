@@ -1,0 +1,52 @@
+diff --git a/code-1.1.0-git/build/lite/components/beken.json b/build/lite/components/beken.json
+new file mode 100755
+index 0000000..f3beb38
+--- /dev/null
++++ b/build/lite/components/beken.json
+@@ -0,0 +1,46 @@
++{
++  "components": [
++    {
++      "component": "ohos_entry",
++      "description": "my ohos entry.",
++      "optional": "true",
++      "dirs": [
++        "//device/bk_corp/bk7231/bk7231_sdk/ohos"
++      ],
++      "targets": [
++        "//device/bk_corp/bk7231/bk7231_sdk/ohos:ohos_entry"
++      ],
++      "rom": "",
++      "ram": "",
++      "output": [],
++      "adapted_kernel": [ "liteos_m" ],
++      "features": [],
++      "deps": {
++        "components": [],
++        "third_party": [ ]
++      }
++    },
++    {
++      "component": "bk7231_sdk",
++      "description": "",
++      "optional": "false",
++      "dirs": [
++        "device/bk_corp/bk7231/bk7231_sdk"
++      ],
++      "targets": [
++        "//device/bk_corp/bk7231/bk7231_sdk:bk_sdk"
++      ],
++      "rom": "",
++      "ram": "",
++      "output": [],
++      "adapted_board": [],
++      "adapted_kernel": [ "liteos_m" ],
++      "features": [],
++      "deps": {
++        "components": [
++          "utils_base"
++        ]
++      }
++    }
++  ]
++}

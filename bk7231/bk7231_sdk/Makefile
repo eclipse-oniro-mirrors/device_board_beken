@@ -31,9 +31,12 @@ SDK_LIBS = $(shell ./get_libs.sh $(SDK_LIBS_DIR))
 SDK_DEP1 = $(shell ls $(SDK_LIBS_DIR))
 SDK_DEP = $(addprefix $(SDK_LIBS_DIR)/, $(SDK_DEP1))
 
-OHOS_LIBS = $(shell ./get_libs.sh $(OUTPUT_DST_DIR)/libs)
+OHOS_LIBS1 = $(shell ./get_libs.sh $(OUTPUT_DST_DIR)/libs)
 OHOS_DEP1 = $(shell ls $(OUTPUT_DST_DIR)/libs)
 OHOS_DEP = $(addprefix $(OUTPUT_DST_DIR)/libs/, $(OHOS_DEP1))
+
+EXCLUDE = -lhichainsdk -lhuks_static #-lcjson_static
+OHOS_LIBS = $(filter-out $(EXCLUDE), $(OHOS_LIBS1))
 
 SDK_OBJS_DIR = sdk_objs
 SDK_OBJS1 = $(shell ls $(SDK_OBJS_DIR))
@@ -50,13 +53,13 @@ LIBS += -L$(SDK_LIBS_DIR) -L$(EXTRA_LIBS_DIR) $(SDK_LIBS) $(EXTRA_LIBS) $(SDK_LI
 PREFIX = arm-none-eabi-
 
 CFLAGS = $(C_INCLUDES)
-CFLAGS += -g -mcpu=arm968e-s -march=armv5te -marm -mthumb-interwork -mlittle-endian -Os -std=c99 -ffunction-sections -Wall -Wno-format -Wno-unknown-pragmas -fsigned-char -fdata-sections -fno-strict-aliasing
+CFLAGS += -g -mcpu=arm968e-s -march=armv5te -marm -mthumb-interwork -mlittle-endian -Os -std=c99 -ffunction-sections -Wall -Wno-format -Wno-unknown-pragmas -fsigned-char -fdata-sections -fno-strict-aliasing -fno-omit-frame-pointer
 
 LINK_FLAGS = 
 LINK_FLAGS += -g -Wl,--gc-sections -marm -mthumb-interwork -mcpu=arm968e-s
 
 EXTRA_FLAGS = 
-EXTRA_FLAGS += -Wl,-wrap,printf -Wl,-wrap,vsnprintf -Wl,-wrap,snprintf -Wl,-wrap,sprintf -Wl,-wrap,puts
+EXTRA_FLAGS += -Wl,-wrap,printf -Wl,-wrap,vprintf -Wl,-wrap,vsnprintf -Wl,-wrap,snprintf -Wl,-wrap,sprintf -Wl,-wrap,puts
 #EXTRA_FLAGS += -Wl,-wrap,malloc -Wl,-wrap,_malloc_r -Wl,-wrap,free -Wl,-wrap,_free_r -Wl,-wrap,zalloc -Wl,-wrap,calloc -Wl,-wrap,realloc  -Wl,-wrap,_realloc_r
 EXTRA_FLAGS += -Wl,-wrap,malloc -Wl,-wrap,free -Wl,-wrap,zalloc -Wl,-wrap,calloc -Wl,-wrap,realloc
 
@@ -108,7 +111,7 @@ $(BUILD_DIR)/$(TARGET_OTA).bin : $(BUILD_DIR)/$(TARGET_OTA).elf
 $(BUILD_DIR)/$(TARGET_OTA).elf : $(OBJECTS) $(SDK_OBJS_DIR)/arch_main.o $(OHOS_DEP) $(SDK_DEP) $(EXTRA_DEP)
 	$(CC) $(OBJECTS) $(SDK_OBJS) $(EXTRA_FLAGS) -specs=nano.specs -T$(LDSCRIPT_OTA) $(LIBS) $(LINK_FLAGS) -Xlinker -Map=$(BUILD_DIR)/$(MAP_FILE_OTA) -o $@
 
-$(SDK_OBJS_DIR)/arch_main.o : $(SDK_LIBS_DIR)/libbk7231_sdk.a
+$(SDK_OBJS_DIR)/arch_main.o : #$(SDK_LIBS_DIR)/libbk7231_sdk.a
 	@echo "uppack libbk7231_sdk.a..."
 	rm -rf $(SDK_OBJS_DIR)
 	mkdir $(SDK_OBJS_DIR)
