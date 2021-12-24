@@ -38,7 +38,7 @@ board_cflags = [
 board_cxx_flags = board_cflags
 board_ld_flags = []
 
-beken_sdk_dir = "${ohos_root_path}/device/bk_corp/bk72xx_liteosm_sdk"
+beken_sdk_dir = "${ohos_root_path}/device/bk_corp/bk7231/bk72xx_liteosm_sdk"
 
 # Board related headfiles search path.
 board_include_dirs = [

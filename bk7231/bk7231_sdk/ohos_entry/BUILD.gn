@@ -1,0 +1,34 @@
+import("//build/lite/config/component/lite_component.gni")
+
+lite_component("ohos") {
+  features = [ ":ohos_entry" ]
+}
+
+static_library("ohos_entry") {
+  sources = [
+    "ohos_entry.c",
+
+  ]
+  deps = [
+    "${beken_sdk_dir}/os/liteos_m/kal:kal",
+    "//base/security/deviceauth/frameworks/deviceauth_lite:hichainsdk",
+    "//base/security/huks/frameworks/huks_lite:huks_sdk",
+    "${device_path}/../hals/communication/bluetooth:bluetooth",
+    "${device_path}/../hals/ohos_connect_adapter:hilink",
+
+  ]
+
+  include_dirs = [
+    "//foundation/distributedschedule/samgr_lite/interfaces/kits/samgr",
+    "//foundation/distributedschedule/samgr_lite/interfaces/kits/communication/broadcast",
+    "//foundation/distributedschedule/samgr_lite/samgr/adapter",
+    "//foundation/distributedschedule/samgr_lite/samgr/source",
+    "//foundation/communication/wifi_lite/interfaces/wifiservice",
+    "//utils/native/lite/hals/file",
+    "//foundation/hilink/include",
+    "//third_party/cJSON",
+    "//foundation/communication/bluetooth/interfaces/innerkits/native_c/include",
+    "//third_party/mbedtls/include",
+
+  ]
+}

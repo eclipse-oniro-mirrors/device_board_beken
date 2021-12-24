@@ -30,7 +30,7 @@
 /* Split memory into area for vectors and ram */
 MEMORY
 {
-	flash  (rx) : ORIGIN = 0x00000000, LENGTH = 2M
+	flash  (rx) : ORIGIN = 0x00010000, LENGTH = 4M
         tcm   (rw!x): ORIGIN = 0x003F0000, LENGTH = 60k
         itcm   (rwx): ORIGIN = 0x003FF000, LENGTH = 4k
         ram   (rw!x): ORIGIN = 0x00400100, LENGTH = 192k - 0x100
@@ -354,6 +354,11 @@ SECTIONS
 	    *(.data .data.*)
 	    *(.sdata) 
 	    *(.gnu.linkonce.d*)
+
+	    *(.igot.plt)
+	    *(.got) 
+	    *(.got.plt)
+	    
     	SORT(CONSTRUCTORS)
         } >ram AT>flash
         _end_data = .;

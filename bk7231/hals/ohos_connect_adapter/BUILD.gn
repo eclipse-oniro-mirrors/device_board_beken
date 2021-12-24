@@ -1,0 +1,52 @@
+import("//build/lite/ndk/ndk.gni")
+
+static_library("hilink") {
+  sources = [
+    "src/hilink_device.c",
+    "src/hilink_open_ota_adapter.c",
+    "src/hilink_open_ota_mcu_adapter.c",
+    "src/hilink_ble_demo.c",
+    "src/oem_auth_config.c",
+    "src/oem_auth_result_storage.c",
+  ]
+  include_dirs = [
+#    "//foundation/communication/bluetooth/interfaces/innerkits/native_c/include",
+#    "//kernel/liteos_m/kal",
+#    "//kernel/liteos_m/kernel/include",
+    "//foundation/distributedschedule/samgr_lite/interfaces/kits/samgr",
+    "//foundation/distributedschedule/samgr_lite/interfaces/kits/communication/broadcast",
+    "//foundation/distributedschedule/samgr_lite/samgr/adapter",
+    "//foundation/distributedschedule/samgr_lite/samgr/source",
+    "//foundation/communication/wifi_lite/interfaces/wifiservice",
+    "//utils/native/lite/hals/file",
+    "//foundation/hilink/include",
+    "//third_party/cJSON",
+    "//foundation/communication/bluetooth/interfaces/innerkits/native_c/include",
+    "//third_party/mbedtls/include",
+#    "//foundation/communication/bluetooth/interfaces/innerkits/native_c/include",
+#    "//third_party/mbedtls/include",
+    
+#    "${beken_sdk_dir}/beken378/driver/ble_5_x_rw/ble_pub/app/api",
+#    "${beken_sdk_dir}/beken378/driver/ble_5_x_rw/platform/7231n/config",
+#    "${beken_sdk_dir}/beken378/driver/ble_5_x_rw/arch/armv5",
+#    "${beken_sdk_dir}/beken378/driver/ble_5_x_rw/arch/armv5/ll",
+#    "${beken_sdk_dir}/beken378/driver/ble_5_x_rw/platform/7231n/entry",
+#    "${beken_sdk_dir}/beken378/driver/ble_5_x_rw/ble_lib/ip/ble/ll/api",
+#    "${beken_sdk_dir}/beken378/driver/ble_5_x_rw/ble_lib/ip/ble/hl/inc",
+#    "${beken_sdk_dir}/beken378/driver/ble_5_x_rw/ble_lib/ip/ble/hl/api",
+#    "${beken_sdk_dir}/beken378/driver/ble_5_x_rw/ble_lib/modules/common/api",
+#    "${beken_sdk_dir}/beken378/driver/ble_5_x_rw/platform/7231n/rwip/api",
+#    "${beken_sdk_dir}/beken378/driver/ble_5_x_rw/ble_lib/modules/ke/api",
+#    "${beken_sdk_dir}/beken378/driver/ble_5_x_rw/ble_pub/ui",
+#    "${beken_sdk_dir}/beken378/driver/ble_5_x_rw/ble_pub/profiles/comm/api",
+  ]
+}
+
+if (ohos_kernel_type == "liteos_m") {
+  ndk_lib("hilink_ndk") {
+    deps = [ ":hilink" ]
+
+    head_files =
+        [ "//foundation/communication/bluetooth/interfaces/innerkits/native_c/include" ]
+  }
+}
