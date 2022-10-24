@@ -1,0 +1,10 @@
+{
+  "parts": {
+    "device_bk7235x": {
+      "module_list": [
+        "//device/board/beken/bk7235x:bk7235x_group"
+      ]
+    }
+  },
+  "subsystem": "device_bk7235x"
+}

@@ -1,5 +1,0 @@
-group("bk7231") {
-    deps = [
-        "${device_path}:bk_sdk"
-    ]
-}

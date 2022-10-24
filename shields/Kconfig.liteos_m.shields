@@ -1,0 +1,10 @@
+
+orsource "*/Kconfig.liteos_m.defconfig.shield"
+
+choice
+    prompt "shield Selection"
+
+    orsource "*/Kconfig.liteos_m.shield"
+
+endchoice
+

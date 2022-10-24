@@ -1,0 +1,65 @@
+root {
+    module = "beken,bk7235";
+    device_info {
+        match_attr = "hdf_manager";
+        template host {
+            hostName = "";
+            priority = 100;
+            template device {
+                template deviceNode {
+                    policy = 0;
+                    priority = 100;
+                    preload = 0;
+                    permission = 0664;
+                    moduleName = "";
+                    serviceName = "";
+                    deviceMatchAttr = "";
+                }
+            }
+        }
+        platform :: host {
+            hostName = "platform_host";
+            priority = 50;
+            device_gpio :: device {
+                gpio0 :: deviceNode {
+                    policy = 1;
+                    priority = 45;
+                    moduleName = "HDF_PLATFORM_GPIO_DRIVER";
+                    serviceName = "HDF_PLATFORM_GPIO";
+                    deviceMatchAttr = "gpio_config";
+                }
+            }
+            device_i2c :: device {
+                i2c_manager :: deviceNode {
+                    policy = 2;
+                    priority = 50;
+                    moduleName = "HDF_PLATFORM_I2C_MANAGER";
+                    serviceName = "HDF_PLATFORM_I2C_MANAGER";
+                }
+                i2c0 :: deviceNode {
+                    policy = 0;
+                    priority = 100;
+                    moduleName = "HDF_PLATFORM_I2C_DRIVER";
+                    serviceName = "HDF_PLATFORM_I2C_0";
+                    deviceMatchAttr = "i2c0_config";
+                }
+            }
+            device_uart :: device {
+                uart1 :: deviceNode {
+                    policy = 1;
+                    priority = 55;
+                    moduleName = "HDF_PLATFORM_UART_DRIVER";
+                    serviceName = "HDF_PLATFORM_UART_1";
+                    deviceMatchAttr = "uart1_config";
+                }
+                uart2 :: deviceNode {
+                    policy = 1;
+                    priority = 60;
+                    moduleName = "HDF_PLATFORM_UART_DRIVER";
+                    serviceName = "HDF_PLATFORM_UART_2";
+                    deviceMatchAttr = "uart2_config";
+                }
+            }
+        }
+    }
+}

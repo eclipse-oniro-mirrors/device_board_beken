@@ -1,0 +1,67 @@
+import("//build/lite/config/component/lite_component.gni")
+import("//build/lite/config/subsystem/lite_subsystem.gni")
+import("${board_adapter_dir}/hals/sdk_dir.gni")
+
+declare_args() {
+  HDF_FRAMEWORKS_PATH = "//drivers/hdf_core/framework"
+}
+
+static_library("sdk_adapter") {
+  sources = [ 
+     "sdk_adapter.c",
+  ]
+  include_dirs = [
+    "include",
+    "//kernel/liteos_m/kal/cmsis",
+  ]
+  include_dirs += [
+    "$HDF_FRAMEWORKS_PATH/include",
+    "$HDF_FRAMEWORKS_PATH/include/osal",
+    "$HDF_FRAMEWORKS_PATH/include/utils",
+    "$HDF_FRAMEWORKS_PATH/utils/include",
+    "$HDF_FRAMEWORKS_PATH/include/platform",
+    "$HDF_FRAMEWORKS_PATH/include/core",
+    "$HDF_FRAMEWORKS_PATH/include/net",
+    "$HDF_FRAMEWORKS_PATH/include/wifi",
+    "$HDF_FRAMEWORKS_PATH/model/network/common/netdevice",
+    "$HDF_FRAMEWORKS_PATH/ability/sbuf/include",
+    "$HDF_FRAMEWORKS_PATH/support/platform/include",
+    "$HDF_FRAMEWORKS_PATH/core/host/include",
+    "$HDF_FRAMEWORKS_PATH/core/manager/include",
+    "$HDF_FRAMEWORKS_PATH/core/shared/include",
+    "$HDF_FRAMEWORKS_PATH/core/common/include/manager",
+    "$HDF_FRAMEWORKS_PATH/core/common/include/host",
+    "$HDF_FRAMEWORKS_PATH/core/adapter/vnode/include",
+    "$HDF_FRAMEWORKS_PATH/core/adapter/syscall/include",
+
+    "$HDF_FRAMEWORKS_PATH/include/platform",
+    "$HDF_FRAMEWORKS_PATH/support/platform/include",
+    "$HDF_FRAMEWORKS_PATH/support/platform/include/fwk",
+    "//drivers/hdf_core/adapter/khdf/liteos_m/osal/include",
+  ]
+  include_dirs += bk_hal_include_dirs
+  include_dirs += [
+    "//utils/native/lite/include",
+    "//base/iot_hardware/peripheral/interfaces/kits",
+  ]
+}
+
+lite_component("adapter") {
+  features = [
+    ":sdk_adapter"
+  ]
+  
+  deps = [
+    "//base/startup/syspara_lite/frameworks/parameter/src:sysparam",
+    "//foundation/systemabilitymgr/samgr_lite/samgr:samgr",
+    "//foundation/systemabilitymgr/samgr_lite/communication/broadcast:broadcast",
+    "//kernel/liteos_m/kal:kal",
+    "//foundation/communication/wifi_lite:wifi",
+   # "//foundation/communication/bluetooth/services/bluetooth:bluetooth",
+    "//base/hiviewdfx/hilog_lite/frameworks/mini:hilog_lite",
+    "//base/hiviewdfx/hievent_lite:hievent_lite",
+    "//base/update/ota_lite/frameworks:ota_lite",
+
+  ]
+}
+

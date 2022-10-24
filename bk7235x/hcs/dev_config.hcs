@@ -1,0 +1,42 @@
+#include "device_info.hcs"
+root {
+    platform {
+        /* gpio config : 
+        	0 : no pull
+        	1 : pull up
+        	2 : pull down
+        */
+        gpio_config {
+            match_attr = "gpio_config";
+            pinCnt = 4;
+            pin = [0, 1, 2, 3];
+            realPin = [25, 28, 46, 47];
+            config = [0, 0, 2, 1];
+        }
+        uart1_config {
+            match_attr = "uart1_config";
+            idx = 1;
+            sn = "abc_123 ok";
+            base = 0x120a0000;  // UART base register address
+            irqNum = 38;
+            baudrate = 115200;
+            uartClk = 24000000; // 24 M
+        }
+        uart2_config {
+            match_attr = "uart2_config";
+            idx = 2;
+            sn = "887799";
+            base = 0x220a0000;  // UART base register address
+            irqNum = 39;
+            baudrate = 115200;
+            uartClk = 24000000; // 24 M
+        }
+        i2c0_config {
+            match_attr = "i2c0_config";
+            irqNum = 15;
+            dataRate = 400000;
+            devAddr = 0x18;
+        }
+    }
+}
+

@@ -1,0 +1,34 @@
+import("//build/lite/config/subsystem/lite_subsystem.gni")
+import("//kernel/liteos_m/liteos.gni")
+
+module_name = get_path_info(rebase_path("."), "name")
+module_switch = defined(LOSCFG_BOARD_BK7235X)
+kernel_module(module_name) {
+  #deps = [ "$product_path/hdf_config:hdf_hcs" ]
+}
+
+declare_args() {
+}
+
+lite_subsystem("bk_sdk") {
+  subsystem_components = [ ":cjson" ]
+}
+
+lite_component("cjson") {
+  features = []
+
+  deps = [
+    "//build/lite/config/component/cJSON:cjson_static",
+  ]
+}
+
+build_ext_component("run_wifiiot_scons") {
+  exec_path = rebase_path(".",root_build_dir)
+  outdir = rebase_path(root_out_dir)
+  command = "sh build_sdk.sh $outdir"
+  deps = [
+    "//device/soc/beken/bk7235/hals/communication/wifi_lite/wifiservice:wifiservice",
+    "//build/lite:ohos",
+    "adapter"
+  ]
+}
