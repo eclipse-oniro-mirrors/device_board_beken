@@ -21,9 +21,9 @@ BEKEN_CHIP_TYPE=bk7235
 #maybe adjust
 OUTPUT_DST_DIR ?= ../../../../../out/bk7235x/wifi_${BEKEN_CHIP_TYPE}
 BK_SDK_DIR = ../../../../soc/beken/${BEKEN_CHIP_TYPE}/liteos_m/bk_sdk_armino
-BK_PROJECT_CONFIG = build/harmony/${BEKEN_CHIP_TYPE}/armino_as_lib/${BEKEN_CHIP_TYPE}/config
-BK_PROJECT_INCLUDE = build/harmony/${BEKEN_CHIP_TYPE}/armino_as_lib/include
-BK_PROJECT_PART = build/harmony/${BEKEN_CHIP_TYPE}/armino_as_lib/${BEKEN_CHIP_TYPE}/libs
+BK_PROJECT_CONFIG = build/openharmony/${BEKEN_CHIP_TYPE}/armino_as_lib/${BEKEN_CHIP_TYPE}/config
+BK_PROJECT_INCLUDE = build/openharmony/${BEKEN_CHIP_TYPE}/armino_as_lib/include
+BK_PROJECT_PART = build/openharmony/${BEKEN_CHIP_TYPE}/armino_as_lib/${BEKEN_CHIP_TYPE}/libs
 BK_LIB_DIR = $(BK_SDK_DIR)/$(BK_PROJECT_PART)
 LITEOS_V = liteos_m_mst
 BUILD_DIR = build
@@ -102,7 +102,9 @@ $(BUILD_DIR)/$(TARGET).elf : $(BK_LIB_DIR)/libbk7235.a $(OBJECTS) $(OHOS_DEP)
 $(BUILD_DIR)/$(TARGET_OTA).bin : $(BUILD_DIR)/$(TARGET_OTA).elf
 	$(BIN) $< $@
 	$(OBJDUMP) -d $< > $(BUILD_DIR)/$(TARGET_OTA).asm
-	(cd $(BUILD_DIR) && ../beken_packager ../pack.json )
+	$(ENCRYPT) $@ $(ENCRYPT_FLAG)
+	mv $(BUILD_DIR)/$(TARGET_OTA)_crc.bin $(BUILD_DIR)/all_2M.1220.bin
+	#(cd $(BUILD_DIR) && ../beken_packager ../pack.json )
 
 #diff : two OTA suffix
 $(BUILD_DIR)/$(TARGET_OTA).elf : $(BK_LIB_DIR)/libbk7235.a $(OBJECTS) $(OHOS_DEP)
@@ -111,7 +113,7 @@ $(BUILD_DIR)/$(TARGET_OTA).elf : $(BK_LIB_DIR)/libbk7235.a $(OBJECTS) $(OHOS_DEP
 $(BK_LIB_DIR)/libbk7235.a:
 	@echo "building armino libs"
 	rm -rf $(BK_SDK_DIR)/build/
-	make -C $(BK_SDK_DIR) bk7235 PROJECT=harmony
+	make -C $(BK_SDK_DIR) bk7235 PROJECT=openharmony
 
 $(BUILD_DIR)/%.o: adapter/%.c
 	$(CC) $(CFLAGS) -c $< -o $@

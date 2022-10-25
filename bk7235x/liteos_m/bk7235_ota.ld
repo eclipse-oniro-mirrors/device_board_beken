@@ -2,10 +2,10 @@
 ENTRY(_start)
 SECTIONS
 {
-	PROVIDE (__executable_start = 0x00010000);
-	NDS_SAG_LMA_CPU0_LOAD1 = 0x00010000 ;
+	PROVIDE (__executable_start = 0x00000000);
+	NDS_SAG_LMA_CPU0_LOAD1 = 0x00000000 ;
 	CPU0_LOAD1_BEGIN = NDS_SAG_LMA_CPU0_LOAD1;
-	. = 0x00010000;
+	. = 0x00000000;
 	FLASH1_BEGIN = .;
 	. = ALIGN(ALIGNOF(.nds_vector));
 	.nds_vector 	: { KEEP(*(.nds_vector )) KEEP(*(SORT(.nds_vector.* ))) }
