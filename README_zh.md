@@ -62,14 +62,13 @@ BK7235开发板包含以下几个部分：
 
 ## 环境搭建
 
-参考[环境搭建(此链接需要修改)](https://gitee.com/numzerone/readme_test/tree/master/soc#环境搭建)
+参考[环境搭建](https://gitee.com/openharmony/device_soc_beken#环境搭建)
 
 ## 产品简介
 
-参考[产品简介(此链接需要修改)](figures/博通集成电路BK7235产品简介.pptx)
+参考[产品简介](figures/博通集成电路BK7235产品简介.pptx)
 
 ## 相关仓
 
-[vendor(此链接需要修改)](https://gitee.com/numzerone/readme_test/tree/master/vendor)
-
-[device_soc(此链接需要修改)](https://gitee.com/numzerone/readme_test/tree/master/soc)
+ [device/soc/beken](https://gitee.com/openharmony/device_soc_beken)
+ [device/board/beken](https://gitee.com/openharmony/device_board_beken)
