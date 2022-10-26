@@ -10,6 +10,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
 if (ohos_kernel_type == "liteos_m") {
   import("//kernel/liteos_m/liteos.gni")
    module_name = get_path_info(rebase_path("."), "name")
