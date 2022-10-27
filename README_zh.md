@@ -5,7 +5,6 @@
   - [BK7235开发板特性](#BK7235开发板特性)
   - [软件架构](#软件架构)
   - [环境搭建](#环境搭建)
-  - [产品简介](#产品简介)
   - [相关仓](#相关仓)
 
 ## 介绍
@@ -26,17 +25,17 @@ BK7235开发板包含以下几个部分：
 
 开发板正面图如下
 
-![开发板正面图](figures/芯片正面图.png)
+![开发板正面图](figures/front.png)
 
 开发板反面图如下
 
-![开发板背面图](figures/芯片背面图.png)
+![开发板背面图](figures/back.png)
 
 利用BK7235开发板，用户即可快速进行产品开发。
 
 ## 芯片框图
 
-![芯片框图](figures/芯片框图.png)
+![芯片框图](figures/framework.png)
 
 ## BK7235开发板特性
 
@@ -48,11 +47,12 @@ BK7235开发板包含以下几个部分：
 6. BK7235支持2.7V~5V宽电压供电，适合家电类应用。
 7. BK7235可以工作在-40℃~+125℃的温度范围，适合灯具及户外等应用。
 
-## 软件架构（修改）
+## 软件架构
 
 ```
 /device/board/beken/		
 ├── bk7235x			
+├── figures			
 ├── shields
 ├── BUILD.gn
 ├── Kconfig.liteos_m.boards
@@ -62,13 +62,10 @@ BK7235开发板包含以下几个部分：
 
 ## 环境搭建
 
-参考[环境搭建](https://gitee.com/openharmony/device_soc_beken#环境搭建)
-
-## 产品简介
-
-参考[产品简介](figures/博通集成电路BK7235产品简介.pptx)
+参考[环境搭建](https://gitee.com/openharmony-sig/device_soc_beken#编译环境搭建)
 
 ## 相关仓
 
- [device/soc/beken](https://gitee.com/openharmony/device_soc_beken)
- [device/board/beken](https://gitee.com/openharmony/device_board_beken)
+[vendor](https://gitee.com/openharmony-sig/vendor_beken)
+
+[soc](https://gitee.com/openharmony-sig/device_soc_beken)
