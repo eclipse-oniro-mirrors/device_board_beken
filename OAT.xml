@@ -22,60 +22,31 @@
         <licensefile></licensefile>
         <policylist>
             <policy name="projectPolicy" desc="">
-                <policyitem type="copyright" name="Copyright (c) 2022 ASR Microelectronics (Shanghai) Co., Ltd. All rights reserved." path=".*" desc="original beken copyright"/>
-                <policyitem type="copyright" name="Copyright (c) 2013-2018 Arm Limited. All rights reserved." path=".*" desc="original beken copyright"/>
-                <policyitem type="copyright" name="Copyright (C) 2015-2017 Alibaba Group Holding Limited." path=".*" desc="beken use Alibaba copyright"/>
-                <policyitem type="copyright" name="Copyright (c) 2020 Huawei Device Co., Ltd." path=".*" desc="beken use Huawei copyright"/>
-                <policyitem type="copyright" name="Copyright (c) 2021 Huawei Device Co., Ltd." path=".*" desc="beken use Huawei copyright"/>
-                <policyitem type="copyright" name="Copyright (c) 2020-2021 Huawei Device Co., Ltd. All rights reserved." path=".*" desc="beken use Huawei copyright"/>
-                <policyitem type="copyright" name="Copyright (c) 2013-2019 Huawei Technologies Co., Ltd. All rights reserved." path=".*" desc="beken use Huawei copyright"/>
-                <policyitem type="copyright" name="Copyright (c) 2009-2020 Arm Limited., Ltd. All rights reserved." path=".*" desc="beken use Huawei copyright"/>
+                <policyitem type="copyright" name="Huawei" path=".*" desc="beken use Huawei copyright"/>
+                <policyitem type="copyright" name="BEKEN" path=".*" desc="use beken copyright"/>
+                <policyitem type="copyright" name="Beken" path=".*" desc="use beken copyright"/>		
                 <policyitem type="license" name="Apache" path=".*" desc="beken use apache 2.0 license"/>
                 <policyitem type="license" name="BSD-3-Clause" path=".*" desc="beken use BSD-3-Clause license"/>
                 <policyitem type="license" name="MIT" path=".*" desc="beken use MIT license"/>
-				<policyitem type="copyright" name="Copyright (C) 2022 Beken Corporation" path=".*" desc="use beken license"/>
-				<policyitem type="copyright" name="Copyright (C) 2022 BEKEN" path=".*" desc="use beken license"/>
-				<policyitem type="copyright" name="Copyright (C) 2022 HiHope Open Source Organization" path=".*" desc="use HiHope copyright"/>
             </policy>
         </policylist>
         <filefilterlist>
             <filefilter name="defaultFilter" desc="beken using MIT files, but invalid copyright">
                 <filteritem type="filepath" name="EULA" desc="beken using MIT files, but invalid copyright"/>
             </filefilter>
-			<filefilter name="defaultFilter" desc="beken using license files, but invalid copyright">
-                <filteritem type="filepath" name="bk7235x/liteos_m/encrypt" desc="beken using license files, but invalid copyright"/>
-				<filteritem type="filepath" name="bk7235x/liteos_m/build - 副本/ohos_exam.o" desc="beken using license files, but invalid copyright"/>
-				<filteritem type="filepath" name="bk7235x/liteos_m/beken_packager" desc="beken using license files, but invalid copyright"/>
-				<filteritem type="filepath" name="bk7235x/liteos_m/build/ohos_exam.o" desc="beken using license files, but invalid copyright"/>
-				<filteritem type="filepath" name="BUILD.gn" desc="beken using license files, but invalid copyright"/>
-				<filteritem type="filepath" name="Kconfig.liteos_m.boards" desc="beken using license files, but invalid copyright"/>
-				<filteritem type="filepath" name="bk7235x/liteos_m/get_libs.sh" desc="beken using license files, but invalid copyright"/>
-				<filteritem type="filepath" name="bk7235x/liteos_m/build - 副本/bk7235_ota.asm" desc="beken using license files, but invalid copyright"/>
-				<filteritem type="filepath" name="Kconfig.liteos_m.defconfig.boards" desc="beken using license files, but invalid copyright"/>
-				<filteritem type="filepath" name="bk7235x/liteos_m/ohos_exam.c" desc="beken using license files, but invalid copyright"/>
-				<filteritem type="filepath" name="Kconfig.liteos_m.shields" desc="beken using license files, but invalid copyright"/>
-				<filteritem type="filepath" name="bk7235x/liteos_m/bk_test/BUILD.gn" desc="beken using license files, but invalid copyright"/>
-				<filteritem type="filepath" name="bk7235x/liteos_m/bk_test/hilink_user_data_storage.c" desc="beken using license files, but invalid copyright"/>
-				<filteritem type="filepath" name="bk7235x/liteos_m/bk_test/ohos_test.c" desc="beken using license files, but invalid copyright"/>
-				<filteritem type="filepath" name="bk7235x/liteos_m/bk_test/include/hilink_user_data_storage.h" desc="beken using license files, but invalid copyright"/>
-				<filteritem type="filepath" name="bk7235x/liteos_m/encryptboard/beken/bk7235x/liteos_m/extra_libs/.keepit" desc="beken using license files, but invalid copyright"/>
-				<filteritem type="filepath" name="bk7235x/liteos_m/sdk_libs/.keepit" desc="beken using license files, but invalid copyright"/>
-				<filteritem type="filepath" name="bk7235x/liteos_m/BUILD.gn" desc="beken using license files, but invalid copyright"/>
-				<filteritem type="filepath" name="bk7235x/liteos_m/build/bk7235_ota.asm" desc="beken using license files, but invalid copyright"/>
-				<filteritem type="filepath" name="shields/BUILD.gn" desc="beken using license files, but invalid copyright"/>
-				<filteritem type="filepath" name="bk7235x/liteos_m/build_sdk.sh" desc="beken using license files, but invalid copyright"/>
-				<filteritem type="filepath" name="shields/Kconfig.liteos_m.shields" desc="beken using license files, but invalid copyright"/>
-				<filteritem type="filepath" name="bk7235x/liteos_m/config.gni" desc="beken using license files, but invalid copyright"/>
-				<filteritem type="filepath" name="bk7235x/liteos_m/extra_libs/.keepit" desc="beken using license files, but invalid copyright"/>
-				<filteritem type="filepath" name="bk7235x/Kconfig.liteos_m.board" desc="beken using license files, but invalid copyright"/>
-				<filteritem type="filepath" name="bk7235x/Kconfig.liteos_m.defconfig.board" desc="beken using license files, but invalid copyright"/>
-				<filteritem type="filepath" name="bk7235x/liteos_m/extra_libs/.keepit" desc="beken using license files, but invalid copyright"/>
-				<filteritem type="filepath" name="bk7235x/bk7235x_defconfig" desc="beken using license files, but invalid copyright"/>
-				<filteritem type="filepath" name="bk7235x/BUILD.gn" desc="beken using license files, but invalid copyright"/>
-				<filteritem type="filepath" name="bk7235x/liteos_m/adapter/entry.c" desc="beken using license files, but invalid copyright"/>
+			
+			<filefilter name="binaryFileTypePolicyFilter" desc="Filters for binary file policies" >
+                <filteritem type="filename" name="*.a|*.so|*.bin|*.exe|*.7z|*.elf|*.png|*.sh|image_gen_header" desc="Temp files"/>
             </filefilter>
-            <filefilter name="binaryFileTypePolicyFilter" desc="Filters for binary file policies" >
-                <filteritem type="filename" name="*.a|*.so|*.bin|*.exe|*.7z|*.elf|*.png|image_gen_header" desc="Temp files"/>
+			
+			<filefilter name="defaultFilter" desc="not invalid copyright">
+                <filteritem type="filepath" name="bk7235x/liteos_m/encrypt" desc="not invalid copyright"/>
+				<filteritem type="filepath" name="Kconfig.liteos_m.boards" desc="not invalid copyright"/>
+				<filteritem type="filepath" name="Kconfig.liteos_m.defconfig.boards" desc="not invalid copyright"/>
+				<filteritem type="filepath" name="shields/Kconfig.liteos_m.shields" desc="not invalid copyright"/>
+				<filteritem type="filepath" name="Kconfig.liteos_m.shields" desc="not invalid copyright"/>
+				<filteritem type="filepath" name="bk7235x/liteos_m/build_sdk.sh" desc="not invalid copyright"/>
+				<filteritem type="filepath" name="bk7235x/liteos_m/get_libs.sh" desc="not invalid copyright"/>
             </filefilter>
         </filefilterlist>
     </oatconfig>
