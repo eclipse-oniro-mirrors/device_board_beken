@@ -26,16 +26,27 @@ BK7235开发板包含以下几个部分：
 
 ```
 device_board_beken/
-├── bk7235x										#BK7235开发板
-│   ├── hcs										#HCS配置目录
-│   ├── hdf										#HDF配置目录
-│   └── liteos_m								#LiteOS-M内核目录
-│
-├── figures										#图片目录
-├── LICENSE										#证书
-├── OAT.xml										#OAT文件
-├── README_zh.md								#说明文档
-└── shields										#Shields配置目录
+├── bk7235x										# BK7235开发板
+│   ├── bk7235x_defconfig						# BK7235默认配置
+│   ├── BUILD.gn								# GN构建脚本
+│   ├── hcs										# HDF驱动框架的配置描述源码
+│   ├── hdf										# HDF配置管理概述
+│   ├── Kconfig.liteos_m.board					# Board LiteOS-M Kconfig配置项
+│   ├── Kconfig.liteos_m.defconfig.board		# Board LiteOS-M Kconfig默认配置
+│   ├── liteos_m								# LiteOS-M内核目录
+│   └── ohos.build								# Build文件
+├── BUILD.gn									# GN构建脚本
+├── EULA										# 最终用户许可协议
+├── figures										# 图片目录
+│   ├── ...										# 插图
+│   └── ...										# 插图
+├── Kconfig.liteos_m.boards						# Boards Kconfig配置项
+├── Kconfig.liteos_m.defconfig.boards			# Boards Kconfig默认配置
+├── Kconfig.liteos_m.shields					# Shields Kconfig配置项
+├── LICENSE										# 证书文件
+├── OAT.xml										# 开源仓审查规则配置文件
+├── README_zh.md								# 中文README文件
+└── shields										# Shields Kconfig配置目录
 ```
 
 ## 开发板特性
@@ -59,19 +70,19 @@ device_board_beken/
 | 组件名       | 能力介绍                                                                                       |
 | -------------- | ------------------------------------------------------------------------------------------------ |
 | 内核         | LiteOS-M。                                                                                        |
-| 上电启动     | 上电启动OpenHarmony。                                                                          |
+| 上电启动     | 上电启动OpenHarmony。         |
 | WLAN服务     | 提供WLAN服务能力。包括：station和softap模式的连接、断开、状态查询等。 |
-| BLE服务      | 提供BLE功能。                                          |
-| 外设控制     | 提供操作外设的能力，包括：I2C、SPI、PWM、CAN、IrDA、TOUCH、SARADC、UART、JPEG encoder/decoder 、DVP camera interface等。                      |
+| BLE服务      | 提供BLE功能。          |
+| 外设控制     | 提供操作外设的能力，包括：I2C、SPI、PWM、CAN、IrDA、TOUCH、SARADC、UART、JPEG encoder/decoder 、DVP camera interface等。|
 | 系统服务管理 | 系统服务管理基于面向服务的架构，提供了OpenHarmony统一化的系统服务开发框架。                  |
 | 启动引导     | 提供系统服务的启动入口标识。在系统服务管理启动时，调用boostrap标识的入口函数，并启动系统服务。 |
 | 系统属性     | 提供获取与设置系统属性的能力。                                                                   |
-| 基础库       | 提供公共基础库能力，包括：KV存储管理等。                                                      |                                                         |
-| XTS          | 提供OpenHarmony生态认证测试套件的集合能力。 
+| 基础库       | 提供公共基础库能力，包括：KV存储管理等。       |                                                         
+| XTS          | 提供OpenHarmony生态认证测试套件的集合能力。 |
 
 ## 快速入门
 
-环境搭建、获取源码、编译烧录等内容参考[快速入门](http://docs.bekencorp.com/armino/bk7235/zh_CN/latest/get-started/index.html)。
+环境搭建、编译烧录等内容参考[编译环境搭建](https://gitee.com/openharmony-sig/device_soc_beken#编译环境搭建)、[编译流程](https://gitee.com/openharmony-sig/device_soc_beken#编译流程)。
 
 ## 相关仓
 
