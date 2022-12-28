@@ -2,7 +2,7 @@
   "parts": {
     "device_bk7235x": {
       "module_list": [
-        "//device/board/beken/bk7235x:bk7235x_group"
+        "//device/soc/beken/bk7235:build_7235_sdk"
       ]
     }
   },

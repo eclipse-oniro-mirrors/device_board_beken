@@ -13,35 +13,97 @@
 
 import("//build/lite/config/subsystem/lite_subsystem.gni")
 import("//kernel/liteos_m/liteos.gni")
+import("${board_adapter_dir}/hals/sdk_dir.gni")
 
 module_name = get_path_info(rebase_path("."), "name")
 module_switch = defined(LOSCFG_BOARD_BK7235X)
 kernel_module(module_name) {
-  #deps = [ "$product_path/hdf_config:hdf_hcs" ]
+  deps = [
+    #"$product_path/hdf_config:hdf_hcs",
+    "${third_party_adatpter_path}/arch",
+    "${third_party_adatpter_path}/musl",
+  ]
 }
 
 declare_args() {
 }
 
+config("public") {
+  include_dirs = [
+    "${beken_sdk_dir}/components/bk_ps/include",
+    "${beken_sdk_dir}/components/bk_startup/liteos_m",
+    "${beken_sdk_dir}/components/bk_startup/liteos_m",
+    "${beken_sdk_dir}/components/bk_common/include",
+    "${beken_sdk_dir}/components/bk_ble",
+    "${beken_sdk_dir}/components/media/include",
+    "${beken_sdk_dir}/components/release",
+    "${beken_sdk_dir}/components/bk_libs/include",
+    "${beken_sdk_dir}/components/easy_flash",
+  ]
+  include_dirs += bk_hal_include_dirs
+
+  lib_dirs = [ "$root_out_dir/libs" ]
+  ldflags = [
+    "-lc",
+    "-Wl,--cref",
+
+    "-fno-rtti",
+    "-fno-lto",
+    "-T$device_path/bk7235_ota.ld",
+  ]
+  defines = [
+    # "WIFI_STATE_NOT_AVALIABLE=WIFI_STATE_NOT_AVAILABLE",
+  ]
+  libs = [
+    "sdk_adapter",
+    "gcc",
+    "bt",
+    "wifi",
+  ]
+
+  if (build_xts) {
+    ldflags += [
+      "-Wl,--whole-archive",
+      "-lbootstrap",
+      "-lbroadcast",
+      "-lbegetutil",
+      "-lcjson_static",
+      "-lhctest",
+      "-lhal_sysparam",
+      "-lhal_update_static",
+      "-lhota",
+      "-lhuks_test_common",
+      "-linithook",
+      "-lmbedtls_static",
+      "-lmodule_ActsBootstrapTest",
+      "-lmodule_ActsDfxFuncTest",
+      "-lmodule_ActsHieventLiteTest",
+      "-lmodule_ActsHuksHalFunctionTest",
+
+      #  "-lmodule_ActsParameterTest",
+      "-lmodule_ActsSamgrTest",
+      "-lmodule_ActsUpdaterFuncTest",
+      "-lmodule_ActsUtilsFileTest",
+      "-lmodule_ActsWifiIotTest",
+
+      #"-lmodule_ActsWifiServiceTest",
+      "-lwifiservice",
+      "-Wl,--no-whole-archive",
+    ]
+  }
+}
+
 lite_subsystem("bk_sdk") {
   subsystem_components = [ ":cjson" ]
+  deps = [
+    "adapter",
+    "//build/lite:ohos",
+    "//device/soc/beken/bk7235/hals/communication/wifi_lite/wifiservice:wifiservice",
+  ]
 }
 
 lite_component("cjson") {
   features = []
 
-  deps = [
-    "//build/lite/config/component/cJSON:cjson_static",
-  ]
-}
-
-build_ext_component("run_wifiiot_scons") {
-  exec_path = rebase_path(".",root_build_dir)
-  outdir = rebase_path(root_out_dir)
-  command = "sh build_sdk.sh $outdir"
-  deps = [
-    "//device/soc/beken/bk7235/hals/communication/wifi_lite/wifiservice:wifiservice",
-    "//build/lite:ohos",
-    "adapter"
-  ]
+  deps = [ "//build/lite/config/component/cJSON:cjson_static" ]
 }
