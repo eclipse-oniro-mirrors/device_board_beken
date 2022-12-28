@@ -20,9 +20,7 @@ declare_args() {
 }
 
 static_library("sdk_adapter") {
-  sources = [ 
-     "sdk_adapter.c",
-  ]
+  sources = [ "sdk_adapter.c" ]
   include_dirs = [
     "include",
     "//kernel/liteos_m/kal/cmsis",
@@ -60,21 +58,18 @@ static_library("sdk_adapter") {
 }
 
 lite_component("adapter") {
-  features = [
-    ":sdk_adapter"
-  ]
-  
-  deps = [
-    "//base/startup/syspara_lite/frameworks/parameter/src:sysparam",
-    "//foundation/systemabilitymgr/samgr_lite/samgr:samgr",
-    "//foundation/systemabilitymgr/samgr_lite/communication/broadcast:broadcast",
-    "//kernel/liteos_m/kal:kal",
-    "//foundation/communication/wifi_lite:wifi",
-   # "//foundation/communication/bluetooth/services/bluetooth:bluetooth",
-    "//base/hiviewdfx/hilog_lite/frameworks/mini:hilog_lite",
-    "//base/hiviewdfx/hievent_lite:hievent_lite",
-    "//base/update/ota_lite/frameworks:ota_lite",
+  features = [ ":sdk_adapter" ]
 
+  deps = [
+    "//base/hiviewdfx/hievent_lite:hievent_lite",
+
+    # "//foundation/communication/bluetooth/services/bluetooth:bluetooth",
+    "//base/hiviewdfx/hilog_lite/frameworks/mini:hilog_lite",
+    "//base/startup/syspara_lite/frameworks/parameter/src:sysparam",
+    "//base/update/sys_installer_lite/frameworks:sys_installer_lite",
+    "//foundation/communication/wifi_lite:wifi",
+    "//foundation/systemabilitymgr/samgr_lite/communication/broadcast:broadcast",
+    "//foundation/systemabilitymgr/samgr_lite/samgr:samgr",
+    "//kernel/liteos_m/kal:kal",
   ]
 }
-
