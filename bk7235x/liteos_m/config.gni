@@ -21,9 +21,9 @@ kernel_version = "3.0"
 board_cpu = ""
 
 # Board arch, e.g.  "armv7-a", "rv32imac".
-board_arch = "rv32imfcxandes"
+board_arch = "rv32imac"
 
-#"rv32imac"
+#"rv32imfcxandes"
 
 # Toolchain name used for system compiling.
 # E.g. gcc-arm-none-eabi, arm-linux-harmonyeabi-gcc, ohos-clang,  riscv32-unknown-elf.
