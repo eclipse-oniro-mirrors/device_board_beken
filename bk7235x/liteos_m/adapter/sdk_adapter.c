@@ -73,3 +73,10 @@ ssize_t _write(int filedes, const void *buf, size_t nbytes)
     return 0;
 }
 
+void __atomic_fetch_add_4(void)
+{
+}
+
+void __atomic_fetch_sub_4(void)
+{
+}
