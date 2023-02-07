@@ -21,9 +21,9 @@ kernel_version = "3.0"
 board_cpu = ""
 
 # Board arch, e.g.  "armv7-a", "rv32imac".
-board_arch = "rv32imac"
+board_arch = "rv32imfcxandes"
 
-#"rv32imfcxandes"
+#"rv32imac"
 
 # Toolchain name used for system compiling.
 # E.g. gcc-arm-none-eabi, arm-linux-harmonyeabi-gcc, ohos-clang,  riscv32-unknown-elf.
@@ -79,6 +79,9 @@ board_cflags = [
   "-Wl,-wrap,strncmp",
   "-Wl,-wrap,HalTrapEntry",
   "-Wl,-wrap,HalTrapVector",
+  "-Wl,-wrap,HalTaskContextSwitch",
+  "-Wl,-wrap,HalStartToRun",
+  "-Wl,-wrap,ArchTskStackInit",
   "-Wl,--defsym,memcpy=memcpy_ss",
   "-Wl,--defsym,memcmp=memcmp_ss",
   "-Wl,--defsym,siprintf=sprintf",
