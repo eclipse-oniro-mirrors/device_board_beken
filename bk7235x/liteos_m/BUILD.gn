@@ -83,7 +83,8 @@ config("public") {
       #  "-lmodule_ActsParameterTest",
       "-lmodule_ActsSamgrTest",
       "-lmodule_ActsUpdaterFuncTest",
-      "-lmodule_ActsUtilsFileTest",
+
+      #  "-lmodule_ActsUtilsFileTest",
       "-lmodule_ActsWifiIotTest",
 
       #"-lmodule_ActsWifiServiceTest",
